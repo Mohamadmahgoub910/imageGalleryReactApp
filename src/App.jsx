@@ -5,6 +5,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import ImageCard from "./components/ImageCard";
+import Welcome from "./components/Welcome";
 
 const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
 // git remote add origin https://github.com/Mohamadmahgoub910/imageGalleryReactApp1.git
@@ -46,14 +47,16 @@ const App = () => {
       ))} */}
       {/* Make some design to display true */}
       <Container className="mt-4">
-        <Row xs={1} md={2} lg={3}>
+        {images.length ? <Row xs={1} md={2} lg={3}>
           {images.map((image, i) => (
             <Col key={i} className="pd-3">
               <ImageCard image={image} deleteImage={handleDeleteImage} />
             </Col>
-          ))}
-        </Row>
+          ))} </Row> : <Welcome />}
+
+
       </Container>
+
     </div>
   );
 };
